@@ -1,0 +1,8 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Runtime files
+uploader.log
+config.json
