@@ -5,7 +5,8 @@ A Python CLI & web interface to fetch your ResMed EzShare CPAP data and upload i
 ## Table of Contents
 
 - [Features]
-- [Requirements] 
+- [Requirements]
+- [hardware requirements] 
 - [Installation]
 - [Configuration]
 - [Usage]( 
@@ -22,6 +23,41 @@ A Python CLI & web interface to fetch your ResMed EzShare CPAP data and upload i
 - Download, zip, and upload new sleep-data files to SleepHQ  
 - Dual interfaces: command-line and simple web UI  
 - Basic unit test for remote-hash functionality  
+
+Flow of the script:
+
+Load your settings
+Reads your SleepHQ credentials and upload history from config.json and a local history file.
+
+Pick the date
+By default it uses today’s date (you can override with --force-date).
+
+Switch your Wi-Fi
+Disconnects from your regular network and joins the ResMed EzShare hotspot.
+
+Check what’s already on the device
+Scrapes the EzShare web interface to see which sleep-session files are available, then builds a “hash” fingerprint of that list.
+
+Check what you’ve already downloaded
+Computes the same fingerprint for any data you’ve stored locally, so it knows which sessions are new.
+
+Download only the new files
+Grabs any session files you haven’t pulled down before and saves them into a “downloads” folder.
+
+Zip up the downloads
+Bundles all the newly downloaded files into a single cpapdata.zip.
+
+Upload to SleepHQ
+Sends that ZIP over HTTPS to the SleepHQ API using your client-ID/secret and login.
+
+Record your success
+Adds today’s date (and hash) to your history file so it won’t re-upload the same data next time.
+
+Switch your Wi-Fi back
+Puts you back on your normal home or office network.
+
+Log everything
+Writes progress messages to uploader.log and any errors to upload_errors.log for later review.
 
 ## Requirements
 
