@@ -4,14 +4,13 @@ A Python CLI & web interface to fetch your ResMed EzShare CPAP data and upload i
 
 ## Table of Contents
 
-- [Features](
+- [Features]
 - [Requirements] 
 - [Installation]
 - [Configuration]
 - [Usage]( 
   - [CLI]
   - [Web UI]
-  - [Running Tests]
 - [Contributing]
 - [License]
 - [Disclaimer]
